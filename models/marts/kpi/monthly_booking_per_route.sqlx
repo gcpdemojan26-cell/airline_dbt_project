@@ -1,0 +1,11 @@
+
+{{ config(materialized='table', tags=['kpi']) }}
+select
+  DATE_TRUNC(sb.order_date, MONTH) as month,
+  {{ bq_hash_key(["cast(sb.origin as string)", "cast(sb.destination as string)"]) }} as route_hk,
+  sb.origin,
+  sb.destination,
+  count(*) as bookings
+from {{ ref('sat_booking') }} sb
+where sb.order_date between {{ var('start_date') }} and {{ var('end_date') }}
+group by 1,2,3,4

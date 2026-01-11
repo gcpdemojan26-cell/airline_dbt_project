@@ -1,0 +1,13 @@
+file_name,entity,columns,types,source
+Airindia_airport_details.csv,airport,"Airport_Code, Airport_Name","STRING, STRING",AirIndia
+SpiceJet_airport_details.csv,airport,"Airport_Code, Airport_Name","STRING, STRING",SpiceJet
+Airindia_age_details.csv,age_group,"AgeGroupID, lowerLimit, UpperLimit","INT64, INT64, INT64",AirIndia
+SpiceJet_age_details.csv,age_group,"AgeGroupID, lowerLimit, UpperLimit","INT64, INT64, INT64",SpiceJet
+Airindia_flight_details.csv,flight,"FlightID, FlightNumber, ArrivalDateTime, ScheduledDepartureDateTime, ActualDepartureDateTime, OriginAirportCode, DestinationAirportCode, SeatCapacity, AvailableSeats","STRING, STRING, TIMESTAMP, TIMESTAMP, TIMESTAMP, STRING, STRING, INT64, INT64",AirIndia
+SpiceJet_Flight_Details.csv,flight,"FlightID, FlightNumber, ArrivalDateTime, ScheduledDepartureDateTime, ActualDepartureDateTime, OriginAirportCode, DestinationAirportCode, SeatCapacity, AvailableSeats","STRING, STRING, TIMESTAMP, TIMESTAMP, TIMESTAMP, STRING, STRING, INT64, INT64",SpiceJet
+Airindia_passenger_details.csv,passenger,"PassengerID, FirstName, LastName, DOB, Email, CreatedDateTime, LastupdateDateTime","STRING, STRING, STRING, DATE, STRING, TIMESTAMP, TIMESTAMP",AirIndia
+SpiceJet_passenger_detail.csv,passenger,"PassengerID, FirstName, LastName, DOB, Email, MobileNumber, CreatedDateTime, LastupdateDateTime","STRING, STRING, STRING, DATE, STRING, STRING, TIMESTAMP, TIMESTAMP",SpiceJet
+Airindia_payment_details.csv,payment,"PaymentID, PaymentMethod, Amount, TransactionDate, Status","STRING, STRING, NUMERIC, DATE, STRING",AirIndia
+SpiceJet_payment_details.csv,payment,"PaymentID, PaymentMethod, Amount, TransactionDate, Status","STRING, STRING, NUMERIC, DATE, STRING",SpiceJet
+Airindia_booking_details.csv,booking,"BookingID, FlightID, PassengerID, Status, BookingDate, SeatNumber, SeatClass, PaymentID, CreatedDateTime, LastupdateDateTime","STRING, STRING, STRING, STRING, DATE, STRING, STRING, STRING, TIMESTAMP, TIMESTAMP",AirIndia
+SpiceJet_booking_details.csv,booking,"BookingID, FlightID, PassengerID, Status, BookingDate, SeatNumber, SeatClass, PaymentID, CreatedDateTime, LastupdateDateTime","STRING, STRING, STRING, STRING, DATE, STRING, STRING, STRING, TIMESTAMP, TIMESTAMP",SpiceJet

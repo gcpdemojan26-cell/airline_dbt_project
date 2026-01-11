@@ -1,0 +1,6 @@
+
+{{ config(materialized='table', tags=['kpi']) }}
+select
+  avg(sb.ticket_price) as avg_ticket_price
+from {{ ref('sat_booking') }} sb
+where sb.order_date between {{ var('start_date') }} and {{ var('end_date') }}

@@ -1,0 +1,134 @@
+
+name: 'airline_dbt_project'
+version: '1.0.0'
+config-version: 2
+
+profile: 'airline_dbt_project'
+
+model-paths: ['models']
+macro-paths: ['macros']
+analysis-paths: ['analyses']
+seed-paths: ['seeds']
+test-paths: ['tests']
+
+vars:
+  start_date: "DATE('1970-01-01')"
+  end_date: "CURRENT_DATE()"
+  top_n: 100
+
+models:
+  airline_dbt_project:
+    +materialized: table
+    datavault:
+      +tags: ['dv']
+      hubs:
+        +materialized: table
+      links:
+        +materialized: table
+      satellites:
+        +materialized: table
+    marts:
+      +tags: ['mart']
+      kpi:
+        +tags: ['kpi']
+        +materialized: table
+
+seeds:
+  airline_dbt_project:
+    Airindia_airport_details:
+      +column_types:
+        Airport_Code: STRING
+        Airport_Name: STRING
+    SpiceJet_airport_details:
+      +column_types:
+        Airport_Code: STRING
+        Airport_Name: STRING
+    Airindia_age_details:
+      +column_types:
+        AgeGroupID: INT64
+        lowerLimit: INT64
+        UpperLimit: INT64
+    SpiceJet_age_details:
+      +column_types:
+        AgeGroupID: INT64
+        lowerLimit: INT64
+        UpperLimit: INT64
+    Airindia_flight_details:
+      +column_types:
+        FlightID: STRING
+        FlightNumber: STRING
+        ArrivalDateTime: TIMESTAMP
+        ScheduledDepartureDateTime: TIMESTAMP
+        ActualDepartureDateTime: TIMESTAMP
+        OriginAirportCode: STRING
+        DestinationAirportCode: STRING
+        SeatCapacity: INT64
+        AvailableSeats: INT64
+    SpiceJet_Flight_Details:
+      +column_types:
+        FlightID: STRING
+        FlightNumber: STRING
+        ArrivalDateTime: TIMESTAMP
+        ScheduledDepartureDateTime: TIMESTAMP
+        ActualDepartureDateTime: TIMESTAMP
+        OriginAirportCode: STRING
+        DestinationAirportCode: STRING
+        SeatCapacity: INT64
+        AvailableSeats: INT64
+    Airindia_passenger_details:
+      +column_types:
+        PassengerID: STRING
+        FirstName: STRING
+        LastName: STRING
+        DOB: DATE
+        Email: STRING
+        CreatedDateTime: TIMESTAMP
+        LastupdateDateTime: TIMESTAMP
+    SpiceJet_passenger_detail:
+      +column_types:
+        PassengerID: STRING
+        FirstName: STRING
+        LastName: STRING
+        DOB: DATE
+        Email: STRING
+        MobileNumber: STRING
+        CreatedDateTime: TIMESTAMP
+        LastupdateDateTime: TIMESTAMP
+    Airindia_payment_details:
+      +column_types:
+        PaymentID: STRING
+        PaymentMethod: STRING
+        Amount: NUMERIC
+        TransactionDate: DATE
+        Status: STRING
+    SpiceJet_payment_details:
+      +column_types:
+        PaymentID: STRING
+        PaymentMethod: STRING
+        Amount: NUMERIC
+        TransactionDate: DATE
+        Status: STRING
+    Airindia_booking_details:
+      +column_types:
+        BookingID: STRING
+        FlightID: STRING
+        PassengerID: STRING
+        Status: STRING
+        BookingDate: DATE
+        SeatNumber: STRING
+        SeatClass: STRING
+        PaymentID: STRING
+        CreatedDateTime: TIMESTAMP
+        LastupdateDateTime: TIMESTAMP
+    SpiceJet_booking_details:
+      +column_types:
+        BookingID: STRING
+        FlightID: STRING
+        PassengerID: STRING
+        Status: STRING
+        BookingDate: DATE
+        SeatNumber: STRING
+        SeatClass: STRING
+        PaymentID: STRING
+        CreatedDateTime: TIMESTAMP
+        LastupdateDateTime: TIMESTAMP

@@ -1,0 +1,60 @@
+
+version: 2
+models:
+  - name: hub_customer
+    columns:
+      - name: customer_hk
+        tests: [not_null, unique]
+  - name: hub_flight
+    columns:
+      - name: flight_hk
+        tests: [not_null, unique]
+  - name: hub_route
+    columns:
+      - name: route_hk
+        tests: [not_null, unique]
+  - name: link_customer_booking
+    columns:
+      - name: customer_booking_hk
+        tests: [not_null, unique]
+      - name: customer_hk
+        tests:
+          - relationships:
+              to: ref('hub_customer')
+              field: customer_hk
+      - name: flight_hk
+        tests:
+          - relationships:
+              to: ref('hub_flight')
+              field: flight_hk
+      - name: booking_hk
+        tests: [not_null]
+  - name: link_flight_booking
+    columns:
+      - name: flight_booking_hk
+        tests: [not_null, unique]
+      - name: flight_hk
+        tests:
+          - relationships:
+              to: ref('hub_flight')
+              field: flight_hk
+      - name: booking_hk
+        tests: [not_null]
+  - name: sat_customer
+    columns:
+      - name: customer_hk
+        tests:
+          - relationships:
+              to: ref('hub_customer')
+              field: customer_hk
+  - name: sat_flight
+    columns:
+      - name: flight_hk
+        tests:
+          - relationships:
+              to: ref('hub_flight')
+              field: flight_hk
+  - name: sat_booking
+    columns:
+      - name: booking_hk
+        tests: [not_null]

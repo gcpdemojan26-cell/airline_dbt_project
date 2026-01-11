@@ -1,0 +1,10 @@
+
+{{ config(materialized='table', tags=['kpi']) }}
+select
+  lcb.customer_id,
+  count(*) as flight_count
+from {{ ref('link_customer_booking') }} lcb
+where lcb.order_date between {{ var('start_date') }} and {{ var('end_date') }}
+group by 1
+order by flight_count desc
+limit {{ var('top_n') }}

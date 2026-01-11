@@ -1,0 +1,14 @@
+
+airline_dbt_project:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: service-account
+      keyfile: /path/to/service_account.json
+      project: YOUR_GCP_PROJECT_ID
+      dataset: staging
+      threads: 8
+      timeout_seconds: 300
+      location: US
+      priority: interactive

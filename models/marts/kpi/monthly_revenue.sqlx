@@ -1,0 +1,8 @@
+
+{{ config(materialized='table', tags=['kpi']) }}
+select
+  DATE_TRUNC(sb.order_date, MONTH) as month,
+  sum(sb.ticket_price) as revenue
+from {{ ref('sat_booking') }} sb
+where sb.order_date between {{ var('start_date') }} and {{ var('end_date') }}
+group by 1

@@ -1,0 +1,42 @@
+
+version: 2
+models:
+  - name: Average_ticket_price
+    description: Average ticket price over a given date range.
+    columns:
+      - name: avg_ticket_price
+        tests: [not_null]
+
+  - name: Average_delay
+    description: Average departure and arrival delays in minutes over a date range.
+    columns:
+      - name: avg_departure_delay
+        tests: [not_null]
+      - name: avg_arrival_delay
+        tests: [not_null]
+
+  - name: monthly_booking_per_route
+    description: Monthly bookings per origin-destination route.
+    columns:
+      - name: month
+        tests: [not_null]
+      - name: route_hk
+        tests: [not_null]
+      - name: bookings
+        tests: [not_null]
+
+  - name: monthly_revenue
+    description: Monthly revenue from ticket sales.
+    columns:
+      - name: month
+        tests: [not_null]
+      - name: revenue
+        tests: [not_null]
+
+  - name: frequent_flyers
+    description: Top N customers by flight count in the date range.
+    columns:
+      - name: customer_id
+        tests: [not_null]
+      - name: flight_count
+        tests: [not_null]

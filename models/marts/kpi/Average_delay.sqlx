@@ -1,0 +1,7 @@
+
+{{ config(materialized='table', tags=['kpi']) }}
+select
+  avg(sf.departure_delay_minutes) as avg_departure_delay,
+  avg(sf.arrival_delay_minutes) as avg_arrival_delay
+from {{ ref('sat_flight') }} sf
+where date(sf.scheduled_departure_ts) between {{ var('start_date') }} and {{ var('end_date') }}
